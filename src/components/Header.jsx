@@ -1,8 +1,11 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import Logo from '../assets/logo.png'
 import IconSino from '../assets/iconSino.png'
 
 const Header = () => {
+  const [showNot, setShowNot] = useState(false) 
+  
   return (
     <header className="bg-purple-400 p-4 text-white">
         <nav className=" mx-2.5 flex justify-between items-center ">
@@ -18,10 +21,18 @@ const Header = () => {
                     <Link to="/torneio" className="hover:text-lime-600 transition-colors duration-300">Torneio</Link>
                 </li>
                 
-                <button className="cursor-pointer" ><img src={IconSino} alt="Notificações" className="w-7 h-7"/></button>
+                <button className="cursor-pointer" onClick={() => setShowNot(!showNot)}><img src={IconSino} alt="Notificações" className="w-7 h-7"/></button>
             </ul>
-
         </nav>
+        {/* Animação das notificações */}
+        {showNot && (
+            <div className="absolute top-20 right-4 w-64 h-40 bg-white text-black rounded-xl shadow-lg flex items-center justify-center animate-slideInRight">
+                Notificações!
+            </div>    
+        )}
+        
+
+        
     </header>
   )
 }

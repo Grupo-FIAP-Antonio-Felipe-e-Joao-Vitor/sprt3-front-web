@@ -3,7 +3,7 @@ import Error from "./routes/Error"
 import Home from "./routes/Home"
 import Torneio from "./routes/Torneio"
 import Header from "./components/Header"
-import Body from "./components/Body"
+
 
 function App() {
 
@@ -11,7 +11,6 @@ function App() {
 
     <BrowserRouter>
       <Header/>
-      <Body/>
       <main>
         <Routes>
 

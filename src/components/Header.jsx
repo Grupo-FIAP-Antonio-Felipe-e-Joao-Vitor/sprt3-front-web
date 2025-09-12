@@ -4,6 +4,7 @@ import Logo from '../assets/logo.png'
 import IconSino from '../assets/iconSino.png'
 
 const Header = () => {
+    // Setando o valor padrão do showNot
   const [showNot, setShowNot] = useState(false) 
   
   return (
@@ -24,6 +25,7 @@ const Header = () => {
                 <button className="cursor-pointer" onClick={() => setShowNot(!showNot)}><img src={IconSino} alt="Notificações" className="w-7 h-7"/></button>
             </ul>
         </nav>
+
         {/* Animação das notificações */}
         {showNot && (
             <div className="absolute top-20 right-4 w-64 h-40 bg-white text-black rounded-xl shadow-lg flex items-center justify-center animate-slideInRight">

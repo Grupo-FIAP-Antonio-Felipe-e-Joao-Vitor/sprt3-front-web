@@ -16,12 +16,15 @@ const Home = () => {
         </div>
 
         {/* Texto sobro os Torneios */}
-        <div className='relative flex justify-center mt-17 group'> {/* Div pai para centralizar a section */}
 
-          {/* Dic sombra */}
-          <div className='absolute top-3 left-132 bg-purple-800 rounded-[50px] max-w-3xl w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700'></div>
+        {/* Div pai para centralizar a section */}
+        <div className='relative flex justify-center mt-17 group'> 
 
-          <div className='relative flex bg-gradient-to-r from-purple-500 to-purple-600 max-w-3xl w-full justify-center items-center flex-col text-center p-6 rounded-[50px] transition-transform duration-700 group-hover:translate-x-1 group-hover:translate-y-1'>
+          {/* Div sombra */}
+          <div className='absolute top-3 left-134 bg-purple-800 rounded-[50px] max-w-3xl w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700'></div>
+          
+          {/* Card principal */}
+          <div className='flex bg-gradient-to-r from-purple-500 to-purple-600 max-w-3xl w-full justify-center items-center flex-col text-center p-6 rounded-[50px] transition-transform duration-700 group-hover:translate-x-1 group-hover:translate-y-1'>
             <h2 className='flex justify-center font-bold text-white text-3xl'>Sobre os torneios</h2>
 
             <p className='text-white mt-10'> O Passa a Bola organiza torneios de futebol feminino que valorizam a presença das mulheres no esporte.

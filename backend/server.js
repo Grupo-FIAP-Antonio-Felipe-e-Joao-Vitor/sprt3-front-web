@@ -16,6 +16,7 @@ const usuarios = [
         email: "Teste Email",
         username: "Teste Username",
         senha: "SenhaTeste",
+        idade: 18,
         role: "User"
     },
 ];
@@ -29,9 +30,9 @@ app.get("/usuarios", (req, res) => {
 });
 
 app.post("/usuarios", (req, res) => {
-    const { nome, email, username, senha, role } = req.body;
+    const { nome, email, username, senha, role, idade } = req.body;
     try {
-        if (nome && email && username && senha && role) {
+        if (nome && email && username && senha && role && idade) {
             novoUsuario = { id: uuid(), nome: nome, email: email, username: username, senha: senha, role: role };
             usuarios.push(novoUsuario)
             res.status(201).json({ message: "Usuário criado." });

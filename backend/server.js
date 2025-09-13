@@ -59,5 +59,20 @@ app.get("/usuarios/:id", (req, res) => {
     }
 });
 
+app.get("/usuarios/email/:email", (req, res) => {
+    try {
+        const usuarioEMAIL = req.params.email; // pega o id da URL
+        const usuario = usuarios.find(item => String(item.email) === String(usuarioEMAIL)); // compara como string
+
+        if (!usuario) {
+            return res.status(404).json({ error: "Usuário não encontrado" });
+        }
+
+        res.status(200).json(usuario);
+    } catch (error) {
+        res.status(500).json({ error: `Erro interno. ${error}` })
+    }
+});
+
 
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));

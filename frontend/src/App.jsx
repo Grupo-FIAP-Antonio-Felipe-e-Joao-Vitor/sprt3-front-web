@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Error from "./routes/Error"
 import Home from "./routes/Home"
 import Torneio from "./routes/Torneio"
+import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Login from "./routes/Login"
 import Cadastro from "./routes/Cadastro"
@@ -29,6 +30,7 @@ function App() {
 
         </Routes>
       </main>
+      <Footer/>
     </BrowserRouter>
   )
 }

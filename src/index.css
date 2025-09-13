@@ -1,2 +1,5 @@
 @import "tailwindcss";
 
+#img-login{
+    background-image: url("./assets/login-image.png");
+}

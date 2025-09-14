@@ -36,7 +36,7 @@ const Cadastro = () => {
       {/* Formulário */}
       <form
         onSubmit={handleSubmit(cadastrarUsuario)}
-        className="w-1/2 flex flex-col justify-center items-start p-16"
+        className="w-full md:w-1/2 flex flex-col justify-center items-start p-16"
       >
         <h1 className="text-4xl font-bold mb-8">Cadastro</h1>
 
@@ -112,7 +112,7 @@ const Cadastro = () => {
 
       {/* Imagem */}
       <div
-        className="w-1/2 h-full bg-cover bg-center"
+        className=" md:w-1/2 h-full bg-cover bg-center"
         style={{ backgroundImage: `url(${cadastroImg})` }}
       ></div>
     </div>

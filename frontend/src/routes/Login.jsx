@@ -50,12 +50,12 @@ const Login = () => {
     <div className="flex h-screen">
       {/* Imagem */}
       <div
-        className="w-1/2 h-full bg-cover bg-center"
+        className="md:w-1/2 h-full bg-cover bg-center"
         style={{ backgroundImage: `url(${loginImg})` }}
       ></div>
 
       {/* Formulário */}
-      <div className="w-1/2 flex flex-col justify-center items-start p-16">
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-start p-16">
         <h1 className="text-4xl font-bold mb-8">Login</h1>
 
         <form className="w-full" onSubmit={verificaConta}>

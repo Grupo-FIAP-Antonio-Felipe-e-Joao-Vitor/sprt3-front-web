@@ -1,73 +1,85 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import Logo from '../assets/logo.png'
-import IconSino from '../assets/iconSino.png'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
+import Logo from '../assets/logo.png';
+import IconSino from '../assets/iconSino.png';
 
 const Header = () => {
-    // Setando o valor padrão do showNot
-  const [showNot, setShowNot] = useState(false) 
-  
+  const [showNot, setShowNot] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-  <header className="bg-purple-400 p-4 text-white">
-    <nav className="flex flex-col md:flex-row md:justify-between md:items-center w-full max-w-7xl mx-auto">
-      {/* Logo */}
-      <Link to="/" className="flex justify-center md:justify-start mb-4 md:mb-0">
-        <img className="w-20 h-20" src={Logo} alt="logo" />
-      </Link>
+    <header className="bg-purple-400 p-4 text-white relative">
+      <nav className="flex justify-between items-center w-full max-w-7xl mx-auto">
+        
+        {/* Logo (esquerda) */}
+        <Link to="/" className="flex items-center">
+          <img className="w-20 h-20" src={Logo} alt="logo" />
+        </Link>
 
-      {/* Menu */}
-      <ul className="flex gap-4 md:gap-6 text-lg font-semibold justify-center items-center">
-        <li className="list-none">
-          <Link
-            to="/"
-            className="hover:text-black transition-colors duration-300"
-          >
-            Home
-          </Link>
-        </li>
+        {/* Menu do meio - links (desktop only) */}
+        <ul className="hidden md:flex gap-6 text-lg font-semibold items-center">
+          <li>
+            <Link to="/" className="hover:text-black transition-colors duration-300">Home</Link>
+          </li>
+          <li>
+            <Link to="/torneio" className="hover:text-black transition-colors duration-300">Torneio</Link>
+          </li>
+        </ul>
 
-        <li className="list-none">
-          <Link
-            to="/torneio"
-            className="hover:text-black transition-colors duration-300"
-          >
-            Torneio
-          </Link>
-        </li>
-
-        <li className="list-none">
+        {/* Direita - Sign in + Sino + Menu Hamburguer */}
+        <div className="flex items-center gap-4">
+          {/* Sign in - desktop */}
           <Link
             to="/login"
-            className="bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 transition-colors duration-300 hover:text-black"
+            className="hidden md:inline-block bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition"
           >
             Sign in
           </Link>
-        </li>
 
-        <li className="list-none">
-          <button
-            className="cursor-pointer"
-            onClick={() => setShowNot(!showNot)}
-          >
-            <img
-              src={IconSino}
-              alt="Notificações"
-              className="w-7 h-7"
-            />
+          {/* Sino - sempre visível */}
+          <button onClick={() => setShowNot(!showNot)}>
+            <img src={IconSino} alt="Notificações" className="w-7 h-7" />
           </button>
-        </li>
-      </ul>
-    </nav>
 
-    {/* Animação das notificações */}
-    {showNot && (
-      <div className="absolute top-20 right-4 w-64 h-40 bg-white text-black rounded-xl shadow-lg flex items-center justify-center animate-slideInRight">
-        Notificações!
-      </div>
-    )}
-  </header>
-)
+          {/* Menu hamburguer - mobile only */}
+          <div className="md:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
+        </div>
+      </nav>
 
-}
+      {/* Menu mobile */}
+      {menuOpen && (
+        <ul className="md:hidden flex flex-col items-center gap-4 mt-4 text-lg font-semibold bg-purple-300 p-4 rounded-xl">
+          <li>
+            <Link to="/" className="hover:text-black" onClick={() => setMenuOpen(false)}>Home</Link>
+          </li>
+          <li>
+            <Link to="/torneio" className="hover:text-black" onClick={() => setMenuOpen(false)}>Torneio</Link>
+          </li>
+          <li>
+            <Link
+              to="/login"
+              className="bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black"
+              onClick={() => setMenuOpen(false)}
+            >
+              Sign in
+            </Link>
+          </li>
+        </ul>
+      )}
 
-export default Header
+      {/* Notificações */}
+      {showNot && (
+        <div className="absolute top-24 right-4 w-64 h-40 bg-white text-black rounded-xl shadow-lg flex items-center justify-center animate-slideInRight z-50">
+          Notificações!
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;

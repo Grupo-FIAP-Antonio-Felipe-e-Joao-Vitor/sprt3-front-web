@@ -48,7 +48,7 @@ const Home = () => {
         {/* Texto sobro os Torneios */}
 
         {/* Div pai para centralizar a section */}
-        <div className='relative flex justify-center mt-17 group'> 
+        <div className='mb-10 relative flex justify-center mt-17 group'> 
 
           {/* Card principal */}
           <div className='flex bg-gradient-to-r from-purple-500 to-purple-600 max-w-3xl w-full justify-center items-center flex-col text-center p-6 rounded-[50px] transition duration-700 group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-[-10px_10px_0px_3px_rgba(92,_6,_177,_1)]'>

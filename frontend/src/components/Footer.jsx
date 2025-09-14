@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <footer className='bg-purple-400 text-white flex h-20 mt-15 justify-between'>
+    <footer className='bg-purple-400 text-white flex h-20 justify-between'>
         {/* Redes sociais */}
         <div className="ml-3">
             <h3 className='text-bold'>

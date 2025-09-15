@@ -1,7 +1,7 @@
-  import Imagem1 from '../assets/imagemhome.jpg';
-  import { FaInstagram } from "react-icons/fa";
-  import { FaYoutube } from "react-icons/fa";
-  import { FaXTwitter } from "react-icons/fa6";
+import Imagem1 from '../assets/imagemhome.jpg';
+import { FaInstagram } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Link, Links } from 'react-router-dom';
 
 

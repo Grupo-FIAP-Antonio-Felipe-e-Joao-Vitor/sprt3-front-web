@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="bg-purple-400 p-2 text-white flex h-20 flex-col">
-      <div className="flex justify-around w-screen">
+      <div className="flex justify-around">
             {/* Redes sociais */}
             <div className="ml-3 flex flex-col justify-center items-center ">
                 <h3 className="text-bold">Redes</h3>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from '../assets/logo.png';
-import IconSino from '../assets/iconSino.png';
+import { FaBell } from "react-icons/fa";
 
 const Header = () => {
   const [showNot, setShowNot] = useState(false);
@@ -32,14 +32,14 @@ const Header = () => {
           {/* Sign in - desktop */}
           <Link
             to="/login"
-            className="hidden md:inline-block bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition"
+            className="hidden md:inline-block bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition duration-300"
           >
             Sign in
           </Link>
 
           {/* Sino - sempre visível */}
-          <button onClick={() => setShowNot(!showNot)}>
-            <img src={IconSino} alt="Notificações" className="w-7 h-7" />
+          <button className="cursor-pointer" onClick={() => setShowNot(!showNot)}>
+            <FaBell className="w-6 h-6 text-purple-600 hover:text-white transition duration-300"/>
           </button>
 
           {/* Menu hamburguer - mobile only */}

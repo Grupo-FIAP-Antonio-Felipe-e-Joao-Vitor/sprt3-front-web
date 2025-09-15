@@ -16,7 +16,7 @@ const Home = () => {
           <div className='bg-white/80 max-w-4xl mt-60 flex flex-col justify-center text-center items-center p-4 gap-5 rounded-2xl'>
 
             <h2 className='flex font-bold justify-center text-purple-600 text-3xl'>Quem somos?</h2>
-            <p className='max-w-4xl text-2xl text-center'> O Passa a Bola é um projeto de mídia independente que dávisibilidade  ao esporte   feminino, especialmente ao futebol.
+            <p className='max-w-4xl text-2xl text-center'> O Passa a Bola é um projeto de mídia independente que dá visibilidade  ao esporte   feminino, especialmente ao futebol.
               Criado por Alê Xavier e Luana Maluf, o canal promove transmissões, entrevistas, reportagens e conteúdos digitais com  foco em valorizar atletas mulheres, 
               combater o machismo no esporte e ampliar a presença feminina na mídia esportiva.</p>
           </div>

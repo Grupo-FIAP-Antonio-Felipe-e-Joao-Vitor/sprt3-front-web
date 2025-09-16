@@ -9,7 +9,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-purple-400 p-4 text-white relative">
+    <header className="bg-purple-400 p-4 text-white relative z-50">
       <nav className="flex justify-between items-center w-full max-w-7xl mx-auto">
         
         {/* Logo (esquerda) */}
@@ -74,7 +74,7 @@ const Header = () => {
 
       {/* Notificações */}
       {showNot && (
-        <div className="absolute top-24 right-4 w-64 h-40 bg-white text-black rounded-xl shadow-lg flex items-center justify-center animate-slideInRight z-50">
+        <div className="absolute top-24 right-4 w-64 h-40 bg-white text-black rounded-xl shadow-lg flex items-center justify-center animate-slideInRight z-40">
           Notificações!
         </div>
       )}

@@ -5,7 +5,7 @@ import { Link, Links } from 'react-router-dom';
 
 
 const Home = () => {
-  return (
+  return (  
     <main>
       <div className="md:relative object-center bg-cover bg-center bg-no-repeat bg-none md:bg-[url('/imagemhome.jpg')]">
         <div className="md:bg-black/50 w-full h-full absolute inset-0 z-0"></div>
@@ -58,7 +58,7 @@ const Home = () => {
           {/* Botão participe já */}
           <div className='mt-5 md:relative z-10 mb-10 flex text-center justify-center items-center transition duration-700 hover:translate-x-1 hover:translate-y-1'>
             <section className='bg-purple-500 text-white w-45 rounded-[5px] text-2xl hover:text-black hover:bg-purple-700transition duration-300 px-2 py-2'>
-              <Link to="/torneio">
+              <Link to="/cadastro">
                   Participe já
               </Link>
             </section>

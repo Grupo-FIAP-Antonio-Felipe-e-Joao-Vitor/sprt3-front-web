@@ -9,17 +9,7 @@ app.use(cors());
 
 const PORT = 3001;
 
-const usuarios = [
-    {
-        id: 1,
-        nome: "Teste Nome",
-        email: "Teste Email",
-        username: "Teste Username",
-        senha: "SenhaTeste",
-        idade: 18,
-        role: "User"
-    },
-];
+const usuarios = [];
 
 app.get("/usuarios", (req, res) => {
     try {
@@ -30,10 +20,10 @@ app.get("/usuarios", (req, res) => {
 });
 
 app.post("/usuarios", (req, res) => {
-    const { nome, email, username, senha, role, idade } = req.body;
+    const { nome, email, senha, role, nascimento } = req.body;
     try {
-        if (nome && email && username && senha && role && idade) {
-            novoUsuario = { id: uuid(), nome: nome, email: email, username: username, senha: senha, role: role };
+        if (nome && email && senha && role && nascimento) {
+            novoUsuario = { id: uuid(), nome: nome, email: email, senha: senha, role: role };
             usuarios.push(novoUsuario)
             res.status(201).json({ message: "Usuário criado." });
         } else {
@@ -61,7 +51,7 @@ app.get("/usuarios/:id", (req, res) => {
 
 app.get("/usuarios/email/:email", (req, res) => {
     try {
-        const usuarioEMAIL = req.params.email; // pega o id da URL
+        const usuarioEMAIL = req.params.email; // pega o enail da URL
         const usuario = usuarios.find(item => String(item.email) === String(usuarioEMAIL)); // compara como string
 
         if (!usuario) {

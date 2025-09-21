@@ -59,15 +59,6 @@ const Cadastro = () => {
         </div>
 
         <div className="flex flex-col mb-4 w-full">
-          <label htmlFor="username" className="mb-2">Username</label>
-          <input
-            type="text"
-            {...register("username")}
-            className="border rounded p-2 w-full"
-          />
-        </div>
-
-        <div className="flex flex-col mb-4 w-full">
           <label htmlFor="senha" className="mb-2">Senha</label>
           <input
             type="password"
@@ -77,10 +68,10 @@ const Cadastro = () => {
         </div>
 
         <div className="flex flex-col mb-4 w-full">
-          <label htmlFor="idade" className="mb-2">Idade</label>
+          <label htmlFor="idade" className="mb-2">Data de nascimento</label>
           <input
-            type="number"
-            {...register("idade")}
+            type="date"
+            {...register("nascimento")}
             className="border rounded p-2 w-full"
           />
         </div>

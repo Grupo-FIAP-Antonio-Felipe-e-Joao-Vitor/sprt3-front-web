@@ -33,10 +33,10 @@ app.get("/usuarios", (req, res) => {
 });
 
 app.post("/registro", async (req, res) => {
-    const { nome, email, senha, role, nascimento } = req.body;
+    const { nome, email, senha, nascimento } = req.body;
     try {
-        if (!nome || !email || !senha || !role || !nascimento) {
-            res.status(400).json({ error: "Todos os dados são obrigatórios" });
+        if (!nome || !email || !senha || !nascimento) {
+            return res.status(400).json({ error: "Todos os dados são obrigatórios" });
         }
 
         const users = consultarUsuarios();
@@ -46,11 +46,12 @@ app.post("/registro", async (req, res) => {
         
         const hashSenha = await bcrypt.hash(senha, 10);
 
-        novoUsuario = { id: uuid(), nome: nome, email: email, senha: hashSenha, role: "User" };
+        novoUsuario = { id: uuid(), nome: nome, email: email, senha: hashSenha, nascimento: nascimento, role: "User" };
         users.push(novoUsuario)
-        res.status(201).json({ message: "Usuário criado." });
+        salvarUsuarios(users)
+        return res.status(201).json({ message: "Usuário criado.", usuario: novoUsuario });
     } catch (error) {
-        res.status(500).json({ error: `Erro interno. ${error}` })
+        return res.status(500).json({ error: `Erro interno. ${error}` })
     }
 })
 
@@ -81,13 +82,13 @@ app.post("/login", async (req, res) => {
         return res.status(404).json({ error: "Email não encontrado" });
     }
 
-    const senhaValida = bcrypt.compare(senha, usuario.senha);
+    const senhaValida = await bcrypt.compare(senha, usuario.senha);
 
     if (!senhaValida) {
         return res.status(400).json({ message: "Senha inválida" });
     }
 
-    return res.status(200).json({ message: "Login realizado com sucesso" });
+    return res.status(200).json({ message: "Login realizado com sucesso", usuario: usuario });
 })
 
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));

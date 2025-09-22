@@ -1,35 +1,44 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import cadastroImg from "../assets/cadastro-imagem.png";
+import axios from "axios";
 
 const Cadastro = () => {
   const { register, handleSubmit, reset } = useForm();
+  const url = "http://localhost:3001/registro"
 
   async function cadastrarUsuario(data) {
-    try {
-      const response = await fetch("http://localhost:3001/usuarios", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data), // já vem pronto do formulário
-      });
+  try {
+    const response = await axios.post(url, data);
 
-      const result = await response.json();
-      console.log("Resposta da API:", result);
+    if (response.status === 201) {
+      alert("Usuário cadastrado com sucesso!");
+      reset();
+    }
+  } 
+  catch (error) {
+    if (error.response) {
+      // Erro vindo do backend
+      const status = error.response.status;
+      const result = error.response.data;
 
-      if (response.ok) {
-        alert("Usuário cadastrado com sucesso!");
-        reset(); // limpa o formulário
-      } else {
-        alert("Erro: " + (result.error || "Não foi possível cadastrar"));
+      if (status === 400 && result.error) {
+        alert("Todos os campos são obrigatórios");
+        reset();
       }
-    } catch (err) {
-      console.error("Erro ao cadastrar:", err);
-      alert("Erro de conexão com a API");
+
+      if (status === 400 && result.message) {
+        alert("Este email já está sendo utilizado");
+        reset();
+      }
+    } else {
+      // Erro inesperado (sem resposta do servidor)
+      alert("Erro inesperado. Tente novamente mais tarde.");
+      console.log(error);
     }
   }
+}
+
 
   return (
     <div className="flex h-screen">
@@ -76,20 +85,9 @@ const Cadastro = () => {
           />
         </div>
 
-        <div className="flex flex-col mb-6 w-full">
-          <label htmlFor="role" className="mb-2">Tipo de usuário</label>
-          <select
-            {...register("role")}
-            className="border rounded p-2 w-full"
-          >
-            <option value="comum">Comum</option>
-            <option value="adm">Administrador</option>
-          </select>
-        </div>
-
         <button
           type="submit"
-          className="bg-purple-600 text-white font-bold py-2 px-6 rounded hover:bg-purple-700"
+          className="bg-purple-600 cursor-pointer text-white font-bold py-2 px-6 rounded hover:bg-purple-700"
         >
           Cadastrar
         </button>

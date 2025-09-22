@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "bb916401-3bb9-4273-8384-c7b9038d0ce6",
+    "nome": "Admin",
+    "email": "admin@admin.com",
+    "senha": "$2b$10$gNMWfNQ8z6QkOkE2gSmnZ.Y3oB6GoEeh/mNolIzaRtwoPErOAh3Wy",
+    "nascimento": "2007-01-19",
+    "role": "Admin"
+  },
+  {
+    "id": "4b219eff-8c44-4fd3-bdea-74bedc8bafd0",
+    "nome": "ANTONIO NETO",
+    "email": "antoniojacintoa@gmail.com",
+    "senha": "$2b$10$JBzQkBOPVjSYI7knDF1tvOBiZiDmDsbM6NhsTONLOdHV6Ft12Q06a",
+    "nascimento": "2007-01-19",
+    "role": "User"
+  }
+]

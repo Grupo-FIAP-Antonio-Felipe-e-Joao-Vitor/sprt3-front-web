@@ -3,32 +3,44 @@ import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/login-image.png";
 import axios from "axios";
 
-const Login = () => {
+const Login = ( { setUsuario } ) => {
   const [email, setEmail] = useState();  
   const [senha, setSenha] = useState();  
   const navigate = useNavigate();
 
+  const url = "http://localhost:3001/login"
+
   async function verificaConta (e) {
     e.preventDefault();
 
+    const data = { email: email, senha: senha };
     try {
-      const response = await axios.get(`http://localhost:3001/usuarios/email/${email}`)
-      const result = response.data;
+      const response = await axios.post(url, data);
       
-      if (result.senha === senha) {
-        navigate("/torneio")
-      } else {
-        alert("Senha incorreta");
-        setSenha("");
-      }
-    } catch (err) {
-      if (err.response && err.response.status === 404) {
-        alert("Email não encontrado");
+      if (response.status === 200) {
+        setUsuario(response.data.usuario);
+        localStorage.setItem("usuario", JSON.stringify(response.data.usuario));
+
+        if (response.data.usuario.role === "Admin") {
+          return navigate("/admin");
+        } else {
+          return navigate("/torneio")
+        }
+      };
+
+    } catch (error) {
+      if (error.response.status === 404) {
         setEmail("");
         setSenha("");
-      } else {
-        console.error("Erro ao conectar:", err);
-        alert("Erro de conexão com a API");
+        return alert("Email não encontrado");
+      }
+      if (error.response.status === 400) {
+        setSenha("");
+        return alert("Senha invalida");
+      }
+      else {
+        console.error("erroro ao conectar:", error);
+        return alert("erroro de conexão com a API");
       }
     }
   }
@@ -74,7 +86,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="bg-purple-600 text-white font-bold py-2 px-6 rounded hover:bg-purple-700"
+            className="bg-purple-600 cursor-pointer text-white font-bold py-2 px-6 rounded hover:bg-purple-700"
           >
             Entrar
           </button>

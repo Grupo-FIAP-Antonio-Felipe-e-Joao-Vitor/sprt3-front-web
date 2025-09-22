@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const { v4: uuid } = require("uuid")
+const bcrypt = require("bcrypt");
+const path = require("path");
+const fs = require("fs");
 
 const app = express();
 
@@ -9,26 +12,43 @@ app.use(cors());
 
 const PORT = 3001;
 
-const usuarios = [];
+const caminhoUsuarios = path.join(__dirname, "./data/usuarios.json");
+
+const consultarUsuarios = () => {
+    const data = fs.readFileSync(caminhoUsuarios, "UTF-8");
+    return JSON.parse(data);
+};
+
+const salvarUsuarios = (users) => {
+    fs.writeFileSync(caminhoUsuarios, JSON.stringify(users, null, 2));
+};
 
 app.get("/usuarios", (req, res) => {
     try {
-        res.status(200).json(usuarios);
+        const users = consultarUsuarios();
+        res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ error: `Erro interno. ${error}` })
     }
 });
 
-app.post("/usuarios", (req, res) => {
+app.post("/registro", async (req, res) => {
     const { nome, email, senha, role, nascimento } = req.body;
     try {
-        if (nome && email && senha && role && nascimento) {
-            novoUsuario = { id: uuid(), nome: nome, email: email, senha: senha, role: role };
-            usuarios.push(novoUsuario)
-            res.status(201).json({ message: "Usuário criado." });
-        } else {
+        if (!nome || !email || !senha || !role || !nascimento) {
             res.status(400).json({ error: "Todos os dados são obrigatórios" });
         }
+
+        const users = consultarUsuarios();
+        if (users.find(user => user.email === email)) {
+            return res.status(400).json({ message: "Email já cadastrado" });
+        };
+        
+        const hashSenha = await bcrypt.hash(senha, 10);
+
+        novoUsuario = { id: uuid(), nome: nome, email: email, senha: hashSenha, role: "User" };
+        users.push(novoUsuario)
+        res.status(201).json({ message: "Usuário criado." });
     } catch (error) {
         res.status(500).json({ error: `Erro interno. ${error}` })
     }
@@ -36,8 +56,10 @@ app.post("/usuarios", (req, res) => {
 
 app.get("/usuarios/:id", (req, res) => {
     try {
-        const usuarioID = req.params.id; // pega o id da URL
-        const usuario = usuarios.find(item => String(item.id) === String(usuarioID)); // compara como string
+        const id = req.params.id; // pega o id da URL
+        const users = consultarUsuarios();
+
+        const usuario = users.find(user => user.id === id);
 
         if (!usuario) {
             return res.status(404).json({ error: "Usuário não encontrado" });
@@ -49,20 +71,23 @@ app.get("/usuarios/:id", (req, res) => {
     }
 });
 
-app.get("/usuarios/email/:email", (req, res) => {
-    try {
-        const usuarioEMAIL = req.params.email; // pega o enail da URL
-        const usuario = usuarios.find(item => String(item.email) === String(usuarioEMAIL)); // compara como string
+app.post("/login", async (req, res) => {
+    const { email, senha } = req.body;
+    const users = consultarUsuarios();
 
-        if (!usuario) {
-            return res.status(404).json({ error: "Usuário não encontrado" });
-        }
-
-        res.status(200).json(usuario);
-    } catch (error) {
-        res.status(500).json({ error: `Erro interno. ${error}` })
+    const usuario = users.find(user => user.email === email);
+    
+    if (!usuario) {
+        return res.status(404).json({ error: "Email não encontrado" });
     }
-});
 
+    const senhaValida = bcrypt.compare(senha, usuario.senha);
+
+    if (!senhaValida) {
+        return res.status(400).json({ message: "Senha inválida" });
+    }
+
+    return res.status(200).json({ message: "Login realizado com sucesso" });
+})
 
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));

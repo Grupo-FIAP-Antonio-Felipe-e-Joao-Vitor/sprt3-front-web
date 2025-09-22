@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from '../assets/logo.png';
 import { FaBell } from "react-icons/fa";
 
-const Header = () => {
+const HeaderADM = ({ setUsuario }) => {
   const [showNot, setShowNot] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header className="bg-purple-400 p-4 text-white relative z-50">
@@ -25,17 +26,24 @@ const Header = () => {
           <li>
             <Link to="/torneio" className="hover:text-black font-bold transition-colors duration-300">Torneio</Link>
           </li>
+          <li>
+            <Link to="/admin" className="hover:text-black font-bold transition-colors duration-300">Painel</Link>
+          </li>
         </ul>
 
-        {/* Direita - Sign in + Sino + Menu Hamburguer */}
+        {/* Direita - Sign out + Sino + Menu Hamburguer */}
         <div className="flex items-center gap-4">
-          {/* Sign in - desktop */}
-          <Link
-            to="/login"
+          {/* Sign out - desktop */}
+          <button
+            onClick={() => {
+                setUsuario(null)
+                localStorage.removeItem("usuario");
+                navigate("/")
+            }}
             className="hidden md:inline-block bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition duration-300"
           >
-            Sign in
-          </Link>
+            Sign out
+          </button>
 
           {/* Sino - sempre visível */}
           <button className="cursor-pointer" onClick={() => setShowNot(!showNot)}>
@@ -61,13 +69,21 @@ const Header = () => {
             <Link to="/torneio" className="hover:text-black" onClick={() => setMenuOpen(false)}>Torneio</Link>
           </li>
           <li>
-            <Link
-              to="/login"
+            <Link to="/admin" className="hover:text-black" onClick={() => setMenuOpen(false)}>Painel</Link>
+          </li>
+          <li>
+            <button
               className="bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black"
-              onClick={() => setMenuOpen(false)}
+              onClick={
+                () => {
+                    setMenuOpen(false)
+                    setUsuario(null)
+                    localStorage.removeItem("usuario");
+                    navigate("/")
+                }}
             >
-              Sign in
-            </Link>
+              Sign out
+            </button>
           </li>
         </ul>
       )}
@@ -82,4 +98,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderADM

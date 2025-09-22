@@ -21,10 +21,10 @@ const HeaderLogado = ({ setUsuario }) => {
         {/* Menu do meio - links (desktop only) */}
         <ul className="hidden md:flex gap-6 text-lg font-semibold items-center">
           <li>
-            <Link to="/" className="hover:text-black transition-colors duration-300">Home</Link>
+            <Link to="/" className="hover:text-black font-bold transition-colors duration-300">Home</Link>
           </li>
           <li>
-            <Link to="/torneio" className="hover:text-black transition-colors duration-300">Torneio</Link>
+            <Link to="/torneio" className="hover:text-black font-bold transition-colors duration-300">Torneio</Link>
           </li>
         </ul>
 

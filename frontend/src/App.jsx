@@ -6,6 +6,7 @@ import Torneio from "./routes/Torneio"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import HeaderLogado from "./components/HeaderLogado"
+import HeaderADM from "./components/HeaderADM"
 import Login from "./routes/Login"
 import Cadastro from "./routes/Cadastro"
 import Admin from "./routes/Admin"
@@ -20,7 +21,13 @@ function App() {
   return (
 
     <BrowserRouter>
-      {usuario ? <HeaderLogado setUsuario={setUsuario} /> : <Header />}
+      {usuario && usuario.role === "Admin" ? (
+        <HeaderADM setUsuario={setUsuario} />
+      ) : usuario ? (
+        <HeaderLogado setUsuario={setUsuario} />
+      ) : (
+        <Header />
+      )}
       <main>
         <Routes>
 

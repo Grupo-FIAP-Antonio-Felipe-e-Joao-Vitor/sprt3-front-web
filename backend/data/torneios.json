@@ -1,0 +1,14 @@
+[
+  {
+    "id": "96a1e3bf-bd2f-4a2c-a858-f32ddd3fad01",
+    "nomeTorneio": "Torneio passa a bola",
+    "quantidadeTimes": 8,
+    "quantidadeJogadorasPorTime": 5,
+    "inicioInscricao": "2025-13-10",
+    "fimInscricao": "2025-23-10",
+    "dataTorneio": "2025-02-11",
+    "usuariosInscritos": [],
+    "vagasTotais": 40,
+    "emAndamento": true
+  }
+]

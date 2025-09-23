@@ -45,49 +45,57 @@ const Cadastro = () => {
       {/* Formulário */}
       <form
         onSubmit={handleSubmit(cadastrarUsuario)}
-        className="w-full md:w-1/2 flex flex-col justify-center items-start p-16"
+        className="w-full md:w-1/2 flex flex-col items-start p-16"
       >
-        <h1 className="text-4xl font-bold mb-8">Cadastro</h1>
+        <h1 className="text-4xl text-center w-full md:text-left font-bold text-purple-700 mb-10">Cadastro</h1>
 
-        <div className="flex flex-col mb-4 w-full">
-          <label htmlFor="nome" className="mb-2">Nome</label>
+        <div className="flex flex-col gap-2 mb-4 w-full">
+          <label className="text-xl font-bold uppercase">Nome</label>
           <input
             type="text"
             {...register("nome")}
-            className="border rounded p-2 w-full"
+            className="text-xl border rounded p-2 w-full" 
+            placeholder="Obrigatório"
+            required
           />
         </div>
 
-        <div className="flex flex-col mb-4 w-full">
-          <label htmlFor="email" className="mb-2">E-mail</label>
+        <div className="flex flex-col gap-2 mb-4 w-full">
+          <label className="text-xl font-bold uppercase">E-mail</label>
           <input
             type="email"
             {...register("email")}
-            className="border rounded p-2 w-full"
+            className="text-xl border rounded p-2 w-full" 
+            placeholder="Obrigatório"
+            required
           />
         </div>
 
-        <div className="flex flex-col mb-4 w-full">
-          <label htmlFor="senha" className="mb-2">Senha</label>
+        <div className="flex flex-col gap-2 mb-4 w-full">
+          <label className="text-xl font-bold uppercase">Senha</label>
           <input
             type="password"
             {...register("senha")}
-            className="border rounded p-2 w-full"
+            className="text-xl border rounded p-2 w-full" 
+            placeholder="Obrigatório"
+            required
           />
         </div>
 
-        <div className="flex flex-col mb-4 w-full">
-          <label htmlFor="idade" className="mb-2">Data de nascimento</label>
+        <div className="flex flex-col gap-2 mb-4 w-full">
+          <label className="text-xl font-bold uppercase">Data de nascimento</label>
           <input
             type="date"
             {...register("nascimento")}
-            className="border rounded p-2 w-full"
+            className="text-xl border rounded p-2 w-full" 
+            placeholder="Obrigatório"
+            required
           />
         </div>
 
         <button
           type="submit"
-          className="bg-purple-600 cursor-pointer text-white font-bold py-2 px-6 rounded hover:bg-purple-700"
+          className="text-2xl uppercase bg-purple-600 cursor-pointer text-white font-medium py-2 px-6 rounded-xl hover:bg-purple-700"
         >
           Cadastrar
         </button>

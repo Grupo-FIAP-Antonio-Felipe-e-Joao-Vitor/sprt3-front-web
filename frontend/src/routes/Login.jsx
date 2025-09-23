@@ -55,38 +55,38 @@ const Login = ( { setUsuario } ) => {
 
       {/* Formulário */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start p-16">
-        <h1 className="text-4xl font-bold mb-8">Login</h1>
+        <h1 className="text-4xl text-center w-full md:text-left font-bold text-purple-700 mb-10">Login</h1>
 
         <form className="w-full" onSubmit={verificaConta}>
-          <div className="flex flex-col mb-4 w-full">
-            <label htmlFor="email-username" className="mb-2">E-mail</label>
+          <div className="flex flex-col gap-2 mb-4 w-full">
+            <label className="text-xl font-bold uppercase">E-mail</label>
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               type="text"
               name="email"
-              id="email"
-              className="border rounded p-2 w-full"
+              className="text-xl border rounded p-2 w-full" 
+              placeholder="Obrigatório"
               required
             />
           </div>
 
           <div className="flex flex-col mb-6 w-full">
-            <label htmlFor="senha" className="mb-2">Senha</label>
+            <label className="text-xl font-bold uppercase">Senha</label>
             <input
               onChange={(e) => setSenha(e.target.value)}
               value={senha}
               type="password"
               name="senha"
-              id="senha"
-              className="border rounded p-2 w-full"
+              className="text-xl border rounded p-2 w-full" 
+              placeholder="Obrigatório"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="bg-purple-600 cursor-pointer text-white font-bold py-2 px-6 rounded hover:bg-purple-700"
+            className="text-2xl uppercase bg-purple-600 cursor-pointer text-white font-medium py-2 px-6 rounded-xl hover:bg-purple-700"
           >
             Entrar
           </button>

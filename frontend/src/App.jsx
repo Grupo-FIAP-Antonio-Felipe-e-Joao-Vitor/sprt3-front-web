@@ -5,11 +5,13 @@ import Home from "./routes/Home"
 import Torneio from "./routes/Torneio"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import HeaderLogado from "./components/HeaderLogado"
-import HeaderADM from "./components/HeaderADM"
 import Login from "./routes/Login"
 import Cadastro from "./routes/Cadastro"
 import Admin from "./routes/Admin"
+import AdminUsuarios from "./routes/AdminUsuarios"
+import AdminTorneios from "./routes/AdminTorneios"
+import AdminTorneiosAtivos from "./routes/AdminTorneiosAtivos"
+import AdminCriarTorneio from "./routes/AdminCriarTorneio"
 
 function App() {
   const [usuario, setUsuario] = useState(() => {
@@ -21,13 +23,7 @@ function App() {
   return (
 
     <BrowserRouter>
-      {usuario && usuario.role === "Admin" ? (
-        <HeaderADM setUsuario={setUsuario} />
-      ) : usuario ? (
-        <HeaderLogado setUsuario={setUsuario} />
-      ) : (
-        <Header />
-      )}
+      <Header setUsuario={setUsuario} usuario={usuario} />
       <main>
         <Routes>
 
@@ -43,6 +39,13 @@ function App() {
 
           <Route path="/admin" element={<Admin usuario={usuario}/>}/>
 
+          <Route path="/admin/usuarios" element={<AdminUsuarios usuario={usuario}/>}/>
+          
+          <Route path="/admin/torneios" element={<AdminTorneios usuario={usuario}/>}/>
+
+          <Route path="/admin/torneios-ativos" element={<AdminTorneiosAtivos usuario={usuario}/>}/>
+
+          <Route path="/admin/criar-torneio" element={<AdminCriarTorneio usuario={usuario}/>}/>
         </Routes>
       </main>
       <Footer/>

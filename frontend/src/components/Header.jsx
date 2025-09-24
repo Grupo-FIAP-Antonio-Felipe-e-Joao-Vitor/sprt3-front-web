@@ -18,7 +18,7 @@ const Header = ({ setUsuario, usuario }) => {
         </Link>
 
         {/* Menu links (desktop) */}
-        <ul className="hidden md:flex gap-6 text-lg font-semibold flex items-center">
+        <ul className="hidden md:flex gap-6 text-lg font-semibold items-center">
           <li>
             <Link to="/" className="hover:text-black uppercase cursor-pointer font-bold transition-colors duration-300">Home</Link>
           </li>

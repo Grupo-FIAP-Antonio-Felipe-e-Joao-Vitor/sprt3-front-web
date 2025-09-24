@@ -17,18 +17,6 @@
     "emAndamento": false
   },
   {
-    "id": "3ef84c4c-b7c1-4855-913f-875b55b39795",
-    "nomeTorneio": "Torneio",
-    "quantidadeTimes": "4",
-    "quantidadeJogadorasPorTime": "5",
-    "inicioInscricao": "2025-10-01",
-    "fimInscricao": "2025-10-03",
-    "dataTorneio": "2025-10-05",
-    "usuariosInscritos": [],
-    "vagasTotais": 20,
-    "emAndamento": false
-  },
-  {
     "id": "7ee6d12a-5e54-4fd1-b964-f40c0bd3e49e",
     "nomeTorneio": "Torneio",
     "quantidadeTimes": "2",

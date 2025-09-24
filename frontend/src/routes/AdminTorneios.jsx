@@ -34,16 +34,16 @@ const AdminTorneios = ({ usuario }) => {
         }
     }
 
-    async function finalizarTorneio (id) {
+    async function finalizarTorneio(id) {
         try {
-            await axios.put(urlFinalizarTorneio + id, {emAndamento: false})
+            await axios.put(urlFinalizarTorneio + id, { emAndamento: false })
             pegaTorneios()
         } catch (error) {
             if (error.response.status === 404) {
                 alert("Torneio não encontrado")
             } else {
                 console.log(error);
-                
+
             }
         }
     }
@@ -78,23 +78,27 @@ const AdminTorneios = ({ usuario }) => {
                                         <details className="cursor-pointer">
                                             <summary>Inscritos</summary>
                                             <div className="flex flex-col mt-2">
-                                                {(t.usuariosInscritos).map((inscrito) => (
-                                                    <span key={inscrito.id}>{inscrito.email}</span>
-                                                ))}
+                                                {t.usuariosInscritos.length > 0 ?
+                                                    (t.usuariosInscritos).map((inscrito) => (
+                                                        <span className="font-normal" key={inscrito.id}>{inscrito.email}</span>
+                                                    )) : (
+                                                        <span className="font-normal">Nenhum usuário inscrito</span>
+                                                    )
+                                                }
                                             </div>
                                         </details>
                                     </td>
                                     <td className="p-3 border-b">
-                                        {t.emAndamento ? 
+                                        {t.emAndamento ?
                                             (
-                                                <button 
-                                                onClick={() => finalizarTorneio(t.id)}
-                                                className="px-4 py-2 bg-red-500 rounded-xl text-white text-xl cursor-pointer"
+                                                <button
+                                                    onClick={() => finalizarTorneio(t.id)}
+                                                    className="px-4 py-2 flex justify-center items-center bg-red-500 rounded-xl text-white text-xl cursor-pointer"
                                                 >
                                                     Finalizar
                                                 </button>
-                                            )    
-                                        : (<span>Finalizado</span>)}
+                                            )
+                                            : (<span>Finalizado</span>)}
                                     </td>
                                 </tr>
                             ))
@@ -107,6 +111,50 @@ const AdminTorneios = ({ usuario }) => {
                         )}
                     </tbody>
                 </table>
+            </div>
+
+            <div className="grid gap-4 md:hidden w-full px-4">
+                {torneios.length > 0 ? (
+                    torneios.map((t) => (
+                        <div
+                            key={t.id}
+                            className="bg-white shadow-md rounded-lg p-4 border border-purple-200"
+                        >
+                            <p><span className="font-bold">ID:</span> {t.id}</p>
+                            <p><span className="font-bold">Nome:</span> {t.nomeTorneio}</p>
+                            <p><span className="font-bold">Times:</span> {t.quantidadeTimes}</p>
+                            <p><span className="font-bold">Jogadoras:</span> {t.quantidadeJogadorasPorTime}</p>
+                            <p><span className="font-bold">Data inscrições:</span> {t.inicioInscricao} - {t.fimInscricao}</p>
+                            <p><span className="font-bold">Data do torneio: </span> {t.dataTorneio}</p>
+                            <p className="font-bold">
+                                <details className="cursor-pointer">
+                                    <summary>Inscritos</summary>
+                                    <div className="flex flex-col mt-2">
+                                        {t.usuariosInscritos.length > 0 ?
+                                            (t.usuariosInscritos).map((inscrito) => (
+                                                <span className="font-normal" key={inscrito.id}>{inscrito.email}</span>
+                                            )) : (
+                                                <span className="font-normal">Nenhum usuário inscrito</span>
+                                            )
+                                        }
+                                    </div>
+                                </details>
+                            </p>
+                            {t.emAndamento ?
+                                (
+                                    <button
+                                        onClick={() => finalizarTorneio(t.id)}
+                                        className="px-4 py-2 mt-2 uppercase flex justify-center items-center bg-red-500 rounded-xl text-white text-xl cursor-pointer"
+                                    >
+                                        Finalizar torneio
+                                    </button>
+                                )
+                                : (<p><span className="font-bold">Status: </span>Finalizado</p>)}
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-center w-full">Nenhum usuário encontrado</p>
+                )}
             </div>
         </main>
     )

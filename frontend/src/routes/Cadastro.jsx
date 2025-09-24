@@ -1,43 +1,46 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import cadastroImg from "../assets/cadastro-imagem.png";
 import axios from "axios";
 
-const Cadastro = () => {
+const Cadastro = ({ setUsuario }) => {
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate()
   const url = "http://localhost:3001/registro"
 
   async function cadastrarUsuario(data) {
-  try {
-    const response = await axios.post(url, data);
+    try {
+      const response = await axios.post(url, data);
 
-    if (response.status === 201) {
-      alert("Usuário cadastrado com sucesso!");
-      reset();
+      if (response.status === 201) {
+        setUsuario(response.data.usuario);
+        localStorage.setItem("usuario", JSON.stringify(response.data.usuario));
+        navigate("/")
+        reset();
+      }
     }
-  } 
-  catch (error) {
-    if (error.response) {
-      // Erro vindo do backend
-      const status = error.response.status;
-      const result = error.response.data;
+    catch (error) {
+      if (error.response) {
+        // Erro vindo do backend
+        const status = error.response.status;
+        const result = error.response.data;
 
-      if (status === 400 && result.error) {
-        alert("Todos os campos são obrigatórios");
-        reset();
-      }
+        if (status === 400 && result.error) {
+          alert("Todos os campos são obrigatórios");
+          reset();
+        }
 
-      if (status === 400 && result.message) {
-        alert("Este email já está sendo utilizado");
-        reset();
+        if (status === 400 && result.message) {
+          alert("Este email já está sendo utilizado");
+          reset();
+        }
+      } else {
+        // Erro inesperado (sem resposta do servidor)
+        alert("Erro inesperado. Tente novamente mais tarde.");
+        console.log(error);
       }
-    } else {
-      // Erro inesperado (sem resposta do servidor)
-      alert("Erro inesperado. Tente novamente mais tarde.");
-      console.log(error);
     }
   }
-}
 
 
   return (
@@ -54,7 +57,7 @@ const Cadastro = () => {
           <input
             type="text"
             {...register("nome")}
-            className="text-xl border rounded p-2 w-full" 
+            className="text-xl border rounded p-2 w-full"
             placeholder="Obrigatório"
             required
           />
@@ -65,7 +68,7 @@ const Cadastro = () => {
           <input
             type="email"
             {...register("email")}
-            className="text-xl border rounded p-2 w-full" 
+            className="text-xl border rounded p-2 w-full"
             placeholder="Obrigatório"
             required
           />
@@ -76,7 +79,7 @@ const Cadastro = () => {
           <input
             type="password"
             {...register("senha")}
-            className="text-xl border rounded p-2 w-full" 
+            className="text-xl border rounded p-2 w-full"
             placeholder="Obrigatório"
             required
           />
@@ -87,7 +90,7 @@ const Cadastro = () => {
           <input
             type="date"
             {...register("nascimento")}
-            className="text-xl border rounded p-2 w-full" 
+            className="text-xl border rounded p-2 w-full"
             placeholder="Obrigatório"
             required
           />

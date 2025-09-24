@@ -14,5 +14,13 @@
     "senha": "$2b$10$JBzQkBOPVjSYI7knDF1tvOBiZiDmDsbM6NhsTONLOdHV6Ft12Q06a",
     "nascimento": "2007-01-19",
     "role": "User"
+  },
+  {
+    "id": "2b266170-d0e4-41e3-9e8a-e96cc8d5b31d",
+    "nome": "Flavia",
+    "email": "teste@teste.com",
+    "senha": "$2b$10$M35ItQVwCQj213Ts1l80ze1cOQP1XFIzIWflSxvCWeZe7va8pcYfO",
+    "nascimento": "2234-09-12",
+    "role": "User"
   }
 ]

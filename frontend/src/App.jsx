@@ -34,7 +34,7 @@ function App() {
 
           <Route path="/login" element={<Login setUsuario={setUsuario}/>}/>
           
-          <Route path="/cadastro" element={<Cadastro/>}/>
+          <Route path="/cadastro" element={<Cadastro setUsuario={setUsuario}/>}/>
 
           <Route path="/admin" element={<Admin usuario={usuario}/>}/>
 

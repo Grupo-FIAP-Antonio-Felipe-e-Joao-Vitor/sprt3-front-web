@@ -18,17 +18,17 @@ const Header = ({ setUsuario, usuario }) => {
         </Link>
 
         {/* Menu links (desktop) */}
-        <ul className="hidden md:flex gap-6 text-lg font-semibold items-center">
+        <ul className="hidden md:flex gap-6 text-lg font-semibold flex items-center">
           <li>
-            <Link to="/" className="hover:text-black cursor-pointer font-bold transition-colors duration-300">Home</Link>
+            <Link to="/" className="hover:text-black uppercase cursor-pointer font-bold transition-colors duration-300">Home</Link>
           </li>
           <li>
-            <Link to="/torneio" className="hover:text-black cursor-pointer font-bold transition-colors duration-300">Torneio</Link>
+            <Link to="/torneio" className="hover:text-black uppercase cursor-pointer font-bold transition-colors duration-300">Torneio</Link>
           </li>
           {usuario && usuario.role === "Admin" ?
             (
             <li>
-              <Link to="/admin" className="hover:text-black cursor-pointer font-bold transition-colors duration-300">Admin</Link>
+              <Link to="/admin" className="hover:text-black uppercase cursor-pointer font-bold transition-colors duration-300">Admin</Link>
             </li>
             ) : null}
         </ul>
@@ -39,22 +39,25 @@ const Header = ({ setUsuario, usuario }) => {
             // Se não tem usuário → Sign in
             <Link
               to="/login"
-              className="hidden md:inline-block cursor-pointer bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition duration-300"
+              className="hidden md:flex w-25 hover:border-2 border-black justify-center items-center font-bold uppercase cursor-pointer bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition-all duration-300"
             >
-              Sign in
+              Entrar
             </Link>
           ) : (
             // Se tem usuário → Sign out
-            <button
-              onClick={() => {
-                setUsuario(null);
-                localStorage.removeItem("usuario");
-                navigate("/");
-              }}
-              className="hidden md:inline-block cursor-pointer bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition duration-300"
-            >
-              Sign out
-            </button>
+            <div className="flex flex-col items-center">
+              <p className="uppercase text-white font-bold mb-1">Olá <span>{usuario.nome}</span></p>
+              <button
+                onClick={() => {
+                  setUsuario(null);
+                  localStorage.removeItem("usuario");
+                  navigate("/");
+                }}
+                className="hidden md:flex w-25 hover:border-2 border-black justify-center items-center font-bold uppercase cursor-pointer bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black transition-all duration-300"
+              >
+                Sair
+              </button>
+            </div>
           )}
 
           {/* Sino */}
@@ -74,14 +77,14 @@ const Header = ({ setUsuario, usuario }) => {
       {/* Menu mobile */}
       {menuOpen && (
         <ul className="md:hidden flex flex-col items-center gap-4 mt-4 text-lg font-semibold bg-purple-300 p-4 rounded-xl">
-          <li>
+          <li className="text-black uppercase">
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           </li>
-          <li>
+          <li className="text-black uppercase">
             <Link to="/torneio" onClick={() => setMenuOpen(false)}>Torneio</Link>
           </li>
           {usuario && usuario.role === "Admin" ? (
-            <li>
+            <li className="text-black uppercase">
               <Link to="/admin" onClick={() => setMenuOpen(false)}>
                 Admin
               </Link>
@@ -92,10 +95,10 @@ const Header = ({ setUsuario, usuario }) => {
             <li>
               <Link
                 to="/login"
-                className="bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black"
+                className="bg-purple-600 px-4 py-2 flex justify-center items-center w-25 uppercase rounded-2xl hover:bg-purple-400 hover:text-black"
                 onClick={() => setMenuOpen(false)}
               >
-                Sign in
+                Entrar
               </Link>
             </li>
           ) : (
@@ -107,9 +110,9 @@ const Header = ({ setUsuario, usuario }) => {
                   navigate("/");
                   setMenuOpen(false);
                 }}
-                className="bg-purple-600 px-4 py-2 rounded-2xl hover:bg-purple-400 hover:text-black"
+                className="bg-purple-600 px-4 py-2 flex justify-center items-center w-25 uppercase rounded-2xl hover:bg-purple-400 hover:text-black"
               >
-                Sign out
+                Sair
               </button>
             </li>
           )}

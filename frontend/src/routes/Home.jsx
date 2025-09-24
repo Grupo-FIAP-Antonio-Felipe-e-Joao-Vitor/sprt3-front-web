@@ -1,14 +1,14 @@
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Link, Links } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
   return (  
     <main>
       <div className="md:relative object-center bg-cover bg-center bg-no-repeat bg-none md:bg-[url('/imagemhome.jpg')]">
-        <div className="md:bg-black/50 w-full h-full absolute inset-0 z-0"></div>
+        <div className="md:bg-black/50 w-full h-full absolute inset-0 md:z-0"></div>
 
         <div className='p-3 md:relative flex flex-col w-full justify-center items-center z-10'>
           {/* Texto sobre o Passa a Bola */}
@@ -20,7 +20,7 @@ const Home = () => {
               combater o machismo no esporte e ampliar a presença feminina na mídia esportiva.</p>
           </div>
           {/* Div redes sociais */}
-          <div className='flex justify-center items-center text-center w-1/2 mt-10 text-2xl gap-20'>
+          <div className='flex justify-center items-center text-center w-1/2 mt-10 text-2xl gap-20 z-10'>
             <a href="https://www.instagram.com/passaabola" target="_blank" rel="noopener noreferrer">
               <div className='bg-purple-400 flex justify-center items-center md:bg-white rounded-full p-4 hover:bg-purple-400 transition duration-300'>
                 <span><FaInstagram/></span>

@@ -10,7 +10,6 @@ import Cadastro from "./routes/Cadastro"
 import Admin from "./routes/Admin"
 import AdminUsuarios from "./routes/AdminUsuarios"
 import AdminTorneios from "./routes/AdminTorneios"
-import AdminTorneiosAtivos from "./routes/AdminTorneiosAtivos"
 import AdminCriarTorneio from "./routes/AdminCriarTorneio"
 
 function App() {
@@ -42,8 +41,6 @@ function App() {
           <Route path="/admin/usuarios" element={<AdminUsuarios usuario={usuario}/>}/>
           
           <Route path="/admin/torneios" element={<AdminTorneios usuario={usuario}/>}/>
-
-          <Route path="/admin/torneios-ativos" element={<AdminTorneiosAtivos usuario={usuario}/>}/>
 
           <Route path="/admin/criar-torneio" element={<AdminCriarTorneio usuario={usuario}/>}/>
         </Routes>

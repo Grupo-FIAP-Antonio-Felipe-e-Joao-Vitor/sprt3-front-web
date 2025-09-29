@@ -22,5 +22,13 @@
     "senha": "$2b$10$M35ItQVwCQj213Ts1l80ze1cOQP1XFIzIWflSxvCWeZe7va8pcYfO",
     "nascimento": "2234-09-12",
     "role": "User"
+  },
+  {
+    "id": "25e3b82d-73c5-4142-9cdf-72c178033d7b",
+    "nome": "Felipe",
+    "email": "felipebicaletto@gmail.com",
+    "senha": "$2b$10$pflKJEFeAkvoqiHOm1bTPuk7naRodmu2V7un0Qw1sP9xu7Tl/J39K",
+    "nascimento": "2006-10-01",
+    "role": "User"
   }
 ]

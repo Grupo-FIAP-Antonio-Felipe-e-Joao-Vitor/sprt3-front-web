@@ -30,7 +30,7 @@ function App() {
 
           <Route path="/" element={<Home/>}/>
 
-          <Route path="/torneio" element={<Torneio/>}/>
+          <Route path="/torneio" element={<Torneio usuario={usuario}/>}/>
 
           <Route path="/login" element={<Login setUsuario={setUsuario}/>}/>
           

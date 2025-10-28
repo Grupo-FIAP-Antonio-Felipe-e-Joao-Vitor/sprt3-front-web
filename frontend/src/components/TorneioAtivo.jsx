@@ -1,59 +1,75 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FaTrophy, FaCheckCircle } from "react-icons/fa";
 
+const TorneioCard = ({ usuario, torneio }) => {
+  const URL = "http://localhost:3001/participarTorneio";
+  const [btnTexto, setBtnTexto] = useState("Inscreva-se");
+  const [inscrito, setInscrito] = useState(false);
 
-const TorneioAtivo = ({usuario, torneio}) => {
-  const URL = "http://localhost:3001/participarTorneio"
-  const [btnTexto, setBtnTexto] = useState("Inscreva-se")
-
-    function formataData(data){
-        const dataParcial = data.split("-")
-        const dataFormatada = `${dataParcial[2]}/${dataParcial[1]}/${dataParcial[0]}`
-        return dataFormatada
+  useEffect(() => {
+    // Verifica se o usuário já está inscrito no torneio
+    if (usuario && torneio.participantes?.some(p => p.id === usuario.id)) {
+      setBtnTexto("Inscrito");
+      setInscrito(true);
     }
+  }, [usuario, torneio.participantes]);
 
-    async function inscrever () {
-      const data = {usuario: usuario}
-      await axios.put(`${URL}/${torneio.id}`, data)
-      setBtnTexto("Inscrito")
+  function formataData(data) {
+    const [ano, mes, dia] = data.split("-");
+    return `${dia}/${mes}/${ano}`;
+  }
+
+  async function inscrever() {
+    if (!usuario) return;
+    try {
+      const data = { usuario };
+      await axios.put(`${URL}/${torneio.id}`, data);
+      setBtnTexto("Inscrito");
+      setInscrito(true);
+      // Opcional: atualizar lista de participantes no card sem refresh
+      torneio.participantes = [...(torneio.participantes || []), usuario];
+    } catch (error) {
+      console.error("Erro ao se inscrever:", error);
     }
-
-    
+  }
 
   return (
-    <main className="flex h-screen justify-center items-center">
-      <div className="bg-gray-900 flex justify-center items-center flex-col max-w-[35rem] w-full h-40 rounded-2xl gap-3">
-        <p className="text-white font-bold max-md:p-4">
-          Inscrições abertas para o {torneio["nomeTorneio"]} até {formataData(torneio.fimInscricao)}
-        </p>
-        <div className="bg-white font-bold">
-          {!usuario ? (
-            <Link to="/cadastro" className="uppercase cursor-pointer">
-              Cadastre-se
-            </Link>
-          ) : (btnTexto === "Inscreva-se" ? (
-            <button
-              className="uppercase cursor-pointer w-full h-full px-2 py-1 rounded-xl hover:bg-gray-200 transition-all duration-300"
-              onClick={() => inscrever()}
-            >
-              {btnTexto}
-            </button>
-          ) : (
-            <button
-              className="uppercase w-full h-full px-2 py-1 rounded-xl bg-gray-300"
-            >
-              {btnTexto}
-            </button>
-          )
-          )}
-        </div>
-        <p className="text-white max-md:p-4">
-          Inscrições abertas até dia 25/10
-        </p>
-      </div>
-    </main>
+    <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-6 rounded-2xl shadow-xl text-white flex flex-col items-center gap-4 transition duration-500 hover:scale-105 w-full max-w-md">
+      <FaTrophy size={40} className="text-yellow-400" />
+      <h2 className="text-2xl font-bold text-center">{torneio.nomeTorneio}</h2>
+      <p className="text-center text-white/80">
+        Inscrições até {formataData(torneio.fimInscricao)}
+      </p>
+
+      {usuario ? (
+        <button
+          onClick={inscrever}
+          disabled={inscrito}
+          className={`w-full py-2 rounded-xl font-bold uppercase transition-all duration-300
+            ${inscrito 
+              ? "bg-gray-300 cursor-not-allowed text-gray-700 flex items-center justify-center gap-2" 
+              : "bg-white text-purple-600 cursor-pointer hover:bg-purple-200 flex items-center justify-center gap-2"}
+          `}
+        >
+          {inscrito && <FaCheckCircle />}
+          {btnTexto}
+        </button>
+      ) : (
+        <Link
+          to="/cadastro"
+          className="w-full py-2 rounded-xl bg-white text-purple-600 font-bold uppercase text-center hover:bg-purple-200 transition-all duration-300"
+        >
+          Cadastre-se
+        </Link>
+      )}
+
+      <p className="text-center text-white/70 text-sm md:text-base">
+        Participe antes do fim das inscrições!
+      </p>
+    </div>
   );
 };
 
-export default TorneioAtivo;
+export default TorneioCard;

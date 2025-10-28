@@ -22,7 +22,7 @@ const Torneio = ({ usuario }) => {
   }, []);
 
   return (
-    <>
+    <section className="min-h-screen flex flex-col items-center justify-center gap-4">
       {loading ? (
         <p>Carregando torneios...</p>
       ) : (
@@ -30,7 +30,7 @@ const Torneio = ({ usuario }) => {
           <TorneioAtivo key={torneio.id} usuario={usuario} torneio={torneio} />
         ))
       )}
-    </>
+    </section>
   );
 };
 

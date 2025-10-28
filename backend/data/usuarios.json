@@ -8,106 +8,11 @@
     "role": "Admin"
   },
   {
-    "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
-    "nome": "teste",
-    "email": "teste@teste",
-    "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
-    "nascimento": "11111-11-11",
-    "torneiosInscrito": [
-      {
-        "id": "7ee6d12a-5e54-4fd1-b964-f40c0bd3e49e",
-        "nomeTorneio": "Torneio",
-        "quantidadeTimes": "2",
-        "quantidadeJogadorasPorTime": "2",
-        "inicioInscricao": "2025-09-08",
-        "fimInscricao": "2025-09-10",
-        "dataTorneio": "2025-09-25",
-        "usuariosInscritos": [
-          {
-            "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
-            "nome": "teste",
-            "email": "teste@teste",
-            "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
-            "nascimento": "11111-11-11",
-            "torneiosInscrito": [],
-            "role": "User"
-          }
-        ],
-        "vagasTotais": 4,
-        "emAndamento": true
-      },
-      {
-        "id": "7ee6d12a-5e54-4fd1-b964-f40c0bd3e49e",
-        "nomeTorneio": "Torneio",
-        "quantidadeTimes": "2",
-        "quantidadeJogadorasPorTime": "2",
-        "inicioInscricao": "2025-09-08",
-        "fimInscricao": "2025-09-10",
-        "dataTorneio": "2025-09-25",
-        "usuariosInscritos": [
-          {
-            "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
-            "nome": "teste",
-            "email": "teste@teste",
-            "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
-            "nascimento": "11111-11-11",
-            "torneiosInscrito": [],
-            "role": "User"
-          },
-          {
-            "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
-            "nome": "teste",
-            "email": "teste@teste",
-            "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
-            "nascimento": "11111-11-11",
-            "torneiosInscrito": [],
-            "role": "User"
-          }
-        ],
-        "vagasTotais": 4,
-        "emAndamento": true
-      },
-      {
-        "id": "7ee6d12a-5e54-4fd1-b964-f40c0bd3e49e",
-        "nomeTorneio": "Torneio",
-        "quantidadeTimes": "2",
-        "quantidadeJogadorasPorTime": "2",
-        "inicioInscricao": "2025-09-08",
-        "fimInscricao": "2025-09-10",
-        "dataTorneio": "2025-09-25",
-        "usuariosInscritos": [
-          {
-            "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
-            "nome": "teste",
-            "email": "teste@teste",
-            "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
-            "nascimento": "11111-11-11",
-            "torneiosInscrito": [],
-            "role": "User"
-          },
-          {
-            "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
-            "nome": "teste",
-            "email": "teste@teste",
-            "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
-            "nascimento": "11111-11-11",
-            "torneiosInscrito": [],
-            "role": "User"
-          },
-          {
-            "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
-            "nome": "teste",
-            "email": "teste@teste",
-            "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
-            "nascimento": "11111-11-11",
-            "torneiosInscrito": [],
-            "role": "User"
-          }
-        ],
-        "vagasTotais": 4,
-        "emAndamento": true
-      }
-    ],
+    "id": "a7d9fe27-d539-44c1-9394-a9d0e877f883",
+    "nome": "Teste",
+    "email": "teste@teste.com",
+    "senha": "$2b$10$YCaGVEzGG1tEWaAbVF7cYesLJ5x9I.v5u1D7YgL8fOlqCttUDK3Xu",
+    "nascimento": "1111-11-11",
     "role": "User"
   }
 ]

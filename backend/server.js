@@ -48,7 +48,7 @@ app.post("/registro", async (req, res) => {
         
         const hashSenha = await bcrypt.hash(senha, 10);
 
-        novoUsuario = { id: uuid(), nome: nome, email: email, senha: hashSenha, nascimento: nascimento, torneiosInscrito: [], role: "User" };
+        novoUsuario = { id: uuid(), nome: nome, email: email, senha: hashSenha, nascimento: nascimento, role: "User" };
         users.push(novoUsuario)
         salvarDados(caminhoUsuarios, users)
         return res.status(201).json({ message: "Usuário criado.", usuario: novoUsuario });
@@ -148,9 +148,6 @@ app.put("/participarTorneio/:id", (req, res) => {
         const torneios = consultarDados(caminhoTorneios);
         const torneio = torneios.find(torneio => torneio.id === id);
 
-        const usuarios = consultarDados(caminhoUsuarios);
-        const user = usuarios.find(user => user.id === usuario.id);
-        
         if (!torneio) {
             return res.status(404).json({ message: "Torneio não encontrado" });
         }
@@ -158,11 +155,8 @@ app.put("/participarTorneio/:id", (req, res) => {
         if (torneio.usuariosInscritos.length === torneio.vagasTotais) {
             return res.status(400).json({ error: "Não tem mais vagas no torneio" });
         }
-        console.log(usuarios);
         
-        user.torneiosInscrito.push(torneio);
         torneio.usuariosInscritos.push(usuario);
-        salvarDados(caminhoUsuarios, usuarios);
         salvarDados(caminhoTorneios, torneios);
         res.status(200).json({ message: "Inscrito com sucesso" });
 

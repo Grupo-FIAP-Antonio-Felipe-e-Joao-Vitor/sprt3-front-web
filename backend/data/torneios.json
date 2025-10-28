@@ -24,7 +24,35 @@
     "inicioInscricao": "2025-09-08",
     "fimInscricao": "2025-09-10",
     "dataTorneio": "2025-09-25",
-    "usuariosInscritos": [],
+    "usuariosInscritos": [
+      {
+        "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
+        "nome": "teste",
+        "email": "teste@teste",
+        "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
+        "nascimento": "11111-11-11",
+        "torneiosInscrito": [],
+        "role": "User"
+      },
+      {
+        "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
+        "nome": "teste",
+        "email": "teste@teste",
+        "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
+        "nascimento": "11111-11-11",
+        "torneiosInscrito": [],
+        "role": "User"
+      },
+      {
+        "id": "21b076e8-6cbc-4645-a820-9611fe9c8782",
+        "nome": "teste",
+        "email": "teste@teste",
+        "senha": "$2b$10$3ot6Y5R6LXCllOm9huzTgeAoBPXa7IhuOweHKntlCLs9uc61/pUnm",
+        "nascimento": "11111-11-11",
+        "torneiosInscrito": [],
+        "role": "User"
+      }
+    ],
     "vagasTotais": 4,
     "emAndamento": true
   }

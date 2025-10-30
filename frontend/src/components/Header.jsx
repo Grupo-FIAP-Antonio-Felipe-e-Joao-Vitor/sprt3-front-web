@@ -60,11 +60,6 @@ const Header = ({ setUsuario, usuario }) => {
             </div>
           )}
 
-          {/* Sino */}
-          <button className="cursor-pointer" onClick={() => setShowNot(!showNot)}>
-            <FaBell className="w-6 h-6 text-purple-600 hover:text-white transition duration-300"/>
-          </button>
-
           {/* Menu hamburguer (mobile) */}
           <div className="md:hidden">
             <button onClick={() => setMenuOpen(!menuOpen)}>
@@ -117,13 +112,6 @@ const Header = ({ setUsuario, usuario }) => {
             </li>
           )}
         </ul>
-      )}
-
-      {/* Notificações */}
-      {showNot && (
-        <div className="absolute top-24 right-4 w-64 h-40 bg-white text-black rounded-xl shadow-lg flex items-center justify-center animate-slideInRight z-40">
-          Notificações!
-        </div>
       )}
     </header>
   );

@@ -83,7 +83,7 @@ const Home = () => {
               </h2>
             </div>
           </div>
-          <p className="text-center ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, ullam facilis asperiores nesciunt sint assumenda quibusdam magnam odio consectetur veritatis non nam tempora rem soluta perspiciatis esse excepturi? Ut, accusantium!</p>
+          <p className="text-center ">Ale Xavier e Luana Maluf são as fundadoras do Passa a Bola, uma plataforma dedicada ao futebol feminino. Com a missão de dar visibilidade e empoderar mulheres no esporte, elas uniram suas experiências — Ale no jornalismo esportivo e Luana como ex-atleta — para criar um espaço que inspira e promove a igualdade no futebol.</p>
         </div> 
       </Element>
 
@@ -101,21 +101,21 @@ const Home = () => {
           <h2 className="mb-5 font-bold text-[20px] bg-gradient-to-r from-purple-900 to-purple-600 bg-clip-text text-transparent">
             Porque participar?
           </h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste maxime adipisci libero inventore expedita quas.</p>
+          <p className="p-5">Participar dos nossos torneios é uma oportunidade única de mostrar seu talento, fazer novas conexões e viver a paixão pelo futebol feminino. Além disso, você estará contribuindo para a visibilidade e o crescimento do esporte!</p>
         </div>
 
         <div className="flex flex-col text-center justify-center  items-center border-2 border-gray-300 hover:border-pink-500 rounded-2xl h-80 w-80">
           <h2 className="mb-5 font-bold text-[20px] bg-gradient-to-r from-pink-700 to-pink-500 bg-clip-text text-transparent">
             Como funciona?
           </h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste maxime adipisci libero inventore expedita quas.</p>
+          <p className="p-5">Nossos torneios seguem uma estrutura simples e organizada. As equipes competem em partidas emocionantes, com regras claras e justas, sempre com foco no espírito esportivo e no desenvolvimento das atletas.</p>
         </div>
 
         <div className="flex flex-col text-center justify-center  items-center border-2 border-gray-300 hover:border-green-500 rounded-2xl h-80 w-80">
           <h2 className="mb-5 font-bold text-[20px] bg-gradient-to-r from-green-900 to-green-600 bg-clip-text text-transparent">
-            Título?
+            Qual o Prêmio?
           </h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste maxime adipisci libero inventore expedita quas.</p>
+          <p className="p-5">O prêmio vai além da medalha. Oferecemos visibilidade, oportunidades para as jogadoras se destacarem e a chance de representar o futebol feminino em grandes palcos. O título é apenas o começo!</p>
         </div>
       </div> 
       

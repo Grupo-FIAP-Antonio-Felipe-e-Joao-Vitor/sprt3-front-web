@@ -10,11 +10,11 @@ const TorneioCard = ({ usuario, torneio }) => {
 
   useEffect(() => {
     // Verifica se o usuário já está inscrito no torneio
-    if (usuario && torneio.participantes?.some(p => p.id === usuario.id)) {
+    if (usuario && torneio.usuariosInscritos?.some(p => p.id === usuario.id)) {
       setBtnTexto("Inscrito");
       setInscrito(true);
     }
-  }, [usuario, torneio.participantes]);
+  }, [usuario, torneio.usuariosInscritos]);
 
   function formataData(data) {
     const [ano, mes, dia] = data.split("-");

@@ -6,3 +6,7 @@ https://github.com/Grupo-FIAP-Antonio-Felipe-e-Joao-Vitor/sprt3-front-web
  
 # Link do projeto na vercel
 https://sprt3-front-web.vercel.app/
+
+# Login ADM
+# E-mail: admin@admin.com 
+# Senha: Admin@1234

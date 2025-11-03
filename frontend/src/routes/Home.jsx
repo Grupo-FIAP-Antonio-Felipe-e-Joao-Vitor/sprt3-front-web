@@ -55,15 +55,35 @@ const Home = () => {
         
       </div>
 
-      <Element name="sobre" className="flex flex-col items-center justify-center text-center mt-30 ">
+      <Element name="sobre" className="flex flex-col items-center justify-center mt-30 ">
         <h1 className="font-bold text-5xl bg-gradient-to-r from-purple-900 to-purple-600 bg-clip-text text-transparent">
           Nossas Criadoras
         </h1>
         
-        <div className="max-w-2xl mt-15 border-2 border-gray-300 hover:border-purple-500 transition-colors duration-400 rounded-2xl p-3">
-          <h2>Luana Maluf e Alê Xavier</h2>
-          <p className="mb-3">Fundadoras do Passa a Bola</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, ullam facilis asperiores nesciunt sint assumenda quibusdam magnam odio consectetur veritatis non nam tempora rem soluta perspiciatis esse excepturi? Ut, accusantium!</p>
+        <div className="flex flex-col gap max-w-2xl mt-15 border-2 border-gray-300 hover:border-purple-500 transition-colors duration-400 rounded-2xl p-3">
+          <div className="flex justify-around w-full mb-7 mt-5">
+            <div className="flex flex-col justify-center items-center">
+              <div className="w-20 h-20">
+                <img src="./public/luanafoto.jpg" alt="Imagem" 
+                className="h-full w-full rounded-full object-cover"
+                />
+              </div>
+              <h2 className="font-bold">
+                Luana Maluf
+              </h2>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <div className="w-20 h-20">
+                <img src="./public/alefoto.jpg" alt="Imagem" 
+                className="h-full w-full rounded-full object-cover"
+                />
+              </div>
+              <h2 className="font-bold">
+                Alê Xavier
+              </h2>
+            </div>
+          </div>
+          <p className="text-center ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, ullam facilis asperiores nesciunt sint assumenda quibusdam magnam odio consectetur veritatis non nam tempora rem soluta perspiciatis esse excepturi? Ut, accusantium!</p>
         </div> 
       </Element>
 
